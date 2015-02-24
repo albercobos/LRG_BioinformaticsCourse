@@ -193,3 +193,5 @@ sub compute_chi_square{
   }
   return $chi_square; # return the chi square value
 }
+
+exit 1;
