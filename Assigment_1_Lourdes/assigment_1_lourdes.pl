@@ -124,7 +124,6 @@ sub process_cross_data{
       if ($chi_square>7.8147){ # accept the linkage only if the chi square value is greater than
       # the probability of a chi square with 3 degrees of freedom (number of phenotypes - 1)
       # and a probability level of 5%
-# Recording: ufo is genetically linked to pi with chisquare score 32.2794279427943
         my $stock_object_1=$stock_database->get_seed_stock($parent_1); # get the stock object of Parent 1
         my $stock_object_2=$stock_database->get_seed_stock($parent_2); # get the stock object of Parent 2
         my $linked_gene_1=$stock_object_1->Gene_Object; # get the gene object of stock 1
@@ -133,6 +132,7 @@ sub process_cross_data{
         my $linked_gene_2=$stock_object_2->Gene_Object; # get the gene object of stock 2
         push @{$stock_object_1->Gene_Object->{Linkage_To}}, $linked_gene_2; # add the gene object of stock 2
         # as a linked gene of gene object of stock 1 ('Linkage_To' is a property of ArrayRef[Gene])
+	# print an informative message to the user:	
 	print "Recording: ". $linked_gene_1->Gene_Name . " is genetically linked to " . $linked_gene_2->Gene_Name;
 	print " with chisquare score $chi_square\n";
       }
